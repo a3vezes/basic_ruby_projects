@@ -18,4 +18,4 @@ Ruby arrays, strings, hashes and TDD
 
 ## What I learned
 
-How to reduce an array, create a hash, iterate over a string and create tests on rspec
+How to create a hash, iterate over an array, use scan string method and create tests on rspec
