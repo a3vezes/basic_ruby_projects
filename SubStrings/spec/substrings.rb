@@ -27,6 +27,10 @@ describe Substrings do
       expect(subject.substrings('a! b? c:', ['a', 'b', 'c'])).to eql({'a' => 1, 'b' => 1, 'c' => 1})
     end
 
+    it 'works with upercased dictionary' do
+      expect(subject.substrings('a b c', ['A', 'B', 'C'])).to eql({'a' => 1, 'b' => 1, 'c' => 1})
+    end
+
     it 'works with a single word' do
       expect(subject.substrings('below', ["below","down","go","going","horn","how","howdy","it","i","low","own","part","partner","sit"])).to eql({"below" => 1, "low" => 1})
     end
