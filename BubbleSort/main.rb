@@ -5,13 +5,8 @@ class BubbleSort
     i = 0
 
     until i == length - 1 do
-      for k in 0..(length - 1 - i)
-        nxt = list[k + 1] || list[k]
-        if list[k] > nxt
-          aux = list[k]
-          list[k] = nxt
-          list[k + 1] = aux
-        end        
+      for k in 0..(length - 1 - i)        
+        list[k], list[k + 1] = list[k + 1], list[k] if list[k] > (list[k + 1] || list[k])
       end
       i += 1
     end    
