@@ -1,21 +1,20 @@
 class Player
-  def initialize(name)
-    @name = name
+  attr_reader :name, :mark
+
+  def initialize(number)
+    puts "Please input player #{number} name:"
+    @name = gets.chomp
+    puts "Please input player #{number} symbol (X, O or any character):"
+    @mark = gets.chomp
     @wins = 0
-    @losses = 0
   end
 
   def stats
-    puts "Player #{@name} has #{@wins} wins and #{@losses} losses"
+    puts "Player #{@name} has #{@wins} win(s)"
   end
 
   def won
     @wins += 1
-    puts "Player #{@name} has won the match!"
-  end
-
-  def lost
-    @losses += 1
-    puts "Player #{@name} lost the match!"
+    puts "#{@name} has won the match!"
   end
 end

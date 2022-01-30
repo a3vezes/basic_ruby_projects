@@ -1,14 +1,17 @@
 class Board
+  attr_reader :board
+
   def initialize
-    @board = Array.new(9) {|i| i.to_s}
+    @board = Array.new(9) {|i| i}
   end
 
   def board_state
-    puts "--------------------"
+    puts "Tic-tac-toe"
+    puts "-----------------"
     puts @board[0..2].inspect
     puts @board[3..5].inspect
     puts @board[6..8].inspect
-    puts "--------------------"
+    puts "-----------------"
   end
 
   def make_move(mark, index)
