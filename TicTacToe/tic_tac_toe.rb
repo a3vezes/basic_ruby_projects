@@ -7,25 +7,25 @@ class TicTacToe
 
   def initialize
     @player1 = Player.new(1)
-    @player2 = Player.new(2)    
+    @player2 = Player.new(2)
   end
 
-  def menu(option=0)
-    clear_console()
+  def menu(option = 0)
+    clear_console
 
     until option == 3
-      menu_options()
+      menu_options
 
       option = gets.chomp.to_i
 
       if option == 1
-        play()
+        play
       elsif option == 2
-        scores()
+        scores
       elsif option == 3
-        say_bye()
+        say_bye
       else
-        invalid_option()
+        invalid_option
       end
     end
   end
@@ -36,13 +36,13 @@ class TicTacToe
   end
 
   def keep_playing
-    puts "Do you wanna keep playing? (Y/N)"
-    gets.chomp.upcase == 'Y' ? true : false
+    puts 'Do you wanna keep playing? (Y/N)'
+    gets.chomp.upcase == 'Y'
   end
 
   def is_p1_first(player)
     puts "Is #{player.name} going first? (Y/N)"
-    gets.chomp.upcase == 'Y' ? true : false
+    gets.chomp.upcase == 'Y'
   end
 
   def player_move(player)
@@ -51,12 +51,12 @@ class TicTacToe
     valid_input = false
     until valid_input
       valid_input = @board.make_move(player.mark, gets.chomp.to_i)
-      puts invalid_option() unless valid_input
+      puts invalid_option unless valid_input
     end
 
     if @board.solved?(player.mark)
       player.won
-      return true
+      true
     end
   end
 
@@ -72,22 +72,20 @@ class TicTacToe
 
       loop do
         turn += 1
-        clear_console()
+        clear_console
         @board.board_state
         break if player_move(is_p1_first ? @player1 : @player2)
 
         turn += 1
-        clear_console()
+        clear_console
         @board.board_state
         break if turn > 9
-        break if player_move(is_p1_first ? @player2 : @player1)      
+        break if player_move(is_p1_first ? @player2 : @player1)
       end
 
-      puts "Draw Game!" if turn > 9
+      puts 'Draw Game!' if turn > 9
 
       keep_playing = keep_playing()
     end
   end
-
 end
-
