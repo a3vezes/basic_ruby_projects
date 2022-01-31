@@ -66,23 +66,24 @@ class TicTacToe
     while keep_playing
       @board = Board.new
 
-      turn = 1
-      length = @board.board.length
+      turn = 0
 
       is_p1_first = is_p1_first(@player1)
 
-      while turn < length - 1
+      loop do
+        turn += 1
         clear_console()
         @board.board_state
         break if player_move(is_p1_first ? @player1 : @player2)
 
+        turn += 1
         clear_console()
         @board.board_state
+        break if turn > 9
         break if player_move(is_p1_first ? @player2 : @player1)      
-        turn += 1
       end
 
-      puts "Draw Game!" if turn == length
+      puts "Draw Game!" if turn > 9
 
       keep_playing = keep_playing()
     end
@@ -90,5 +91,3 @@ class TicTacToe
 
 end
 
-t = TicTacToe.new
-t.menu
