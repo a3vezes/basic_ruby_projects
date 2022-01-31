@@ -1,4 +1,5 @@
 class Board
+
   attr_reader :board
 
   def initialize
@@ -15,7 +16,11 @@ class Board
   end
 
   def make_move(mark, index)
-    @board[index] = mark
+    if index.between?(0,8) && @board[index].is_a?(Integer)
+      @board[index] = mark
+      return true
+    end
+    false
   end
 
   def solved?(mark)
