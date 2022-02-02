@@ -1,7 +1,5 @@
 class StringCompressor
   def compress(string)
-    result = ''
-    string.scan(/(.)\1{1,8}/) { result << Regexp.last_match(0).length.to_s + Regexp.last_match(0)[0] }
-    result
+    string.gsub(/(.)\1{1,8}/) { |s| s.length.to_s + s[0] }
   end
 end
