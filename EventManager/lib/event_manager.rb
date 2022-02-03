@@ -31,20 +31,36 @@ def save_thank_you_letter(id, form_letter)
   end
 end
 
+def clean_phone_number(phone_number)
+  to_delete = ['-', '.', '(', ')', ' ']
+
+  to_delete.each do |i|
+    phone_number.delete! i
+  end
+
+  return phone_number if phone_number.length == 10
+  return phone_number[1..-1] if phone_number.length == 11 && phone_number[0] == 1
+
+  'Bad Number'
+end
+
 puts 'Event Manager Initialized!'
 
 contents = CSV.open('event_attendees.csv', headers: true, header_converters: :symbol)
 
-template_letter = File.read('form_letter.html')
+template_letter = File.read('form_letter.erb')
 erb_template = ERB.new template_letter
 
 contents.each do |row|
   id = row[0]
   name = row[:first_name]
+  phone_number = row[:home_phone]
 
   zipcode = clean_zipcode(row[:zipcode])
 
   legislators = legislators_by_zipcode(zipcode)
+
+  phone_number = clean_phone_number(phone_number)
 
   form_letter = erb_template.result(binding)
 
