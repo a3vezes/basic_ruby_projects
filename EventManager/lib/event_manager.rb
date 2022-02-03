@@ -31,12 +31,17 @@ def save_thank_you_letter(id, form_letter)
   end
 end
 
-def clean_phone_number(phone_number)
+def delete_special_characters(string)
   to_delete = ['-', '.', '(', ')', ' ']
 
   to_delete.each do |i|
-    phone_number.delete! i
+    string.delete! i
   end
+  string
+end
+
+def clean_phone_number(phone_number)
+  phone_number = delete_special_characters(phone_number)
 
   return phone_number if phone_number.length == 10
   return phone_number[1..-1] if phone_number.length == 11 && phone_number[0] == 1
