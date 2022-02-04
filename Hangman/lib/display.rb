@@ -14,4 +14,8 @@ module Display
   def invalid_option
     puts 'Please input a valid option'
   end
+
+  def display_word(word)
+    puts "The word was #{@word}"
+  end
 end

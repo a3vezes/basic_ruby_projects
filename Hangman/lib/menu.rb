@@ -1,5 +1,6 @@
 require './lib/player'
 require './lib/display'
+require './lib/hangman'
 
 class Menu
   include Display
@@ -12,9 +13,11 @@ class Menu
   def options(option)
     case option
     when 1
-      puts 'Play'
+      hangman = Hangman.new
+      won = hangman.play
+      won ? @player.won : @player.lost
     when 2
-      puts 'Score'
+      @player.stats
     when 3
       puts 'Load Game'
     when 4
