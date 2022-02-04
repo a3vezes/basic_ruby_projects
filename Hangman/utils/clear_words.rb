@@ -21,5 +21,3 @@ class ClearWords
     create_output(clear_words, output)
   end
 end
-
-ClearWords.clear_words('all_words.txt', 'clear_words.txt')

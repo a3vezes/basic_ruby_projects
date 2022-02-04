@@ -16,6 +16,6 @@ module Display
   end
 
   def display_word(word)
-    puts "The word was #{@word}"
+    puts "The word was #{word}"
   end
 end
