@@ -54,7 +54,7 @@ module Loader
   end
 
   def set_game_name
-    puts 'Type The Saved Game Name'
+    puts 'Type The Saved Game Name (A New Game Will Be Created, If Wrong Name)'
     gets.chomp.downcase
   end
 
