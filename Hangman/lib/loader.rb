@@ -8,8 +8,7 @@ module Loader
   end
 
   def dir_length
-    length = Dir.glob("#{@@dirname}/*").length
-    length == 1 ? length : length + 1
+    Dir.glob("#{@@dirname}/*").length + 1
   end
 
   def create_json
@@ -34,14 +33,32 @@ module Loader
 
     puts "Game Saved With Name : #{file_name}"
   end
-end
 
-# [X] Create saved_games dir
-# [X] Check to see if saved_games is created then create it if false
-# [X] Save game
-## [X] Create new json file in saved_games dir with data @word, @tries, @misses, @display_word
-# [] Load game
-## [] Display all saved games
-### [] Display "No saved games" if no saved games
-## [] Gets a name for a saved game
-### [] Return @word, @tries, @misses, @display_word to Hangman Class
+  def load(game_name)
+    obj = JSON.load File.read("#{@@dirname}/#{game_name}")
+    obj.keys.each do |key|
+      instance_variable_set(key, obj[key])
+    end
+  rescue StandardError
+    invalid_option
+  end
+
+  def load_game
+    create_dir
+
+    display_all_saved_games
+
+    game_name = set_game_name
+
+    load(game_name)
+  end
+
+  def set_game_name
+    puts 'Type The Saved Game Name'
+    gets.chomp.downcase
+  end
+
+  def display_all_saved_games
+    puts Dir.children(@@dirname)
+  end
+end

@@ -9,17 +9,21 @@ class Menu
     @player = Player.new
   end
 
-  # Change Method Name?
+  def create_hangman(load_game = false)
+    hangman = Hangman.new
+    hangman.load_game if load_game
+    won = hangman.play
+    won ? @player.won : @player.lost
+  end
+
   def options(option)
     case option
     when 1
-      hangman = Hangman.new
-      won = hangman.play
-      won ? @player.won : @player.lost
+      create_hangman
     when 2
       @player.stats
     when 3
-      puts 'Load Game'
+      create_hangman(true)
     when 4
       puts 'Bye!'
     else
