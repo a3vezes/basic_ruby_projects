@@ -1,7 +1,14 @@
 module Guess
   def make_guess
     puts 'Make a guess'
-    gets.chomp.to_s.downcase[0] || 'a'
+    guess = gets.chomp.to_s.downcase || 'a'
+
+    if guess == 'save'
+      save_game
+      return guess
+    end
+
+    guess[0]
   end
 
   def correct_guess_indexes(guess)
