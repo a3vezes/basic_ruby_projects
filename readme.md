@@ -6,7 +6,7 @@
 
 ## Sumary
 
-### _Algorithms_ : Caesar Cipher, Sub Strings, Stock Picker, Bubble Sort, String Compressor, Custom Enumerables
+### _Algorithms_ : Caesar Cipher, Sub Strings, Stock Picker, Bubble Sort, String Compressor, Custom Enumerables, Merge Sort
 
 ### _OOP_ : Tic Tac Toe, Event Manager, Hangman
 
@@ -16,4 +16,4 @@
 
 ### _Blocks/Yield_ : Custom Enumerables
 
-### _Recursion_ : Recursion Folder
+### _Recursion_ : Recursion Folder, Merge Sort
