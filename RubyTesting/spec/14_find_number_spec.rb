@@ -115,7 +115,8 @@ describe FindNumber do
     # to receive 'value' and return the value of 8, in one of the two ways
     # explained above.
 
-    subject(:game_guessing) { described_class.new(0, 9, number_guessing) }
+    let(:number_guessing) { double('random_number', value: 8)}
+    subject(:game_guessing) { described_class.new(0, 9, number_guessing).make_guess }
 
     # Before you write the #make_guess method:
     # Write a test that would expect #make_guess to return the average of
@@ -123,7 +124,8 @@ describe FindNumber do
     # It will fail with an undefined method error because you haven't
     # written #make_guess yet!
     context 'when min is 0 and max is 9' do
-      xit 'returns 4' do
+      it 'returns 4' do
+        expect(game_guessing).to eq(4)
       end
     end
 
@@ -134,24 +136,34 @@ describe FindNumber do
     # Write a test for each of the following contexts. You will need to create a
     # new instance of FindNumber for each context, but you can use the same
     # random number double created inside this method's describe block.
+    subject(:game_5_9) { described_class.new(5, 9, number_guessing).make_guess }
 
     context 'when min is 5 and max is 9' do
-      xit 'returns 7' do
+      it 'returns 7' do
+        expect(game_5_9).to eq(7)
       end
     end
+
+    subject(:game_8_9) { described_class.new(8, 9, number_guessing).make_guess }
 
     context 'when min is 8 and max is 9' do
-      xit 'returns 8' do
+      it 'returns 8' do
+        expect(game_8_9).to eq(8)
       end
     end
+
+    subject(:game_0_3) { described_class.new(0, 3, number_guessing).make_guess }
 
     context 'when min is 0 and max is 3' do
-      xit 'returns 1' do
+      it 'returns 1' do
+        expect(game_0_3).to eq(1)
       end
     end
 
+    subject(:game_equal) { described_class.new(3, 3, number_guessing).make_guess }
     context 'when min and max both equal 3' do
-      xit 'returns 3' do
+      it 'returns 3' do
+        expect(game_equal).to eq(3)
       end
     end
   end
