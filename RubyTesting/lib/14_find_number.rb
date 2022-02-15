@@ -10,9 +10,17 @@ class FindNumber
     # The RandomNumber class will have an instance variable '@value'
     @answer = answer.value
     @guess = guess
+  end
 
-    def make_guess
-      @guess = ((@min + @max) / 2).round
-    end
+  def make_guess
+    @guess = ((@min + @max) / 2).round
+  end
+
+  def game_over?
+    guess == answer
+  end
+
+  def update_range
+    guess < answer ? @min = guess + 1 : @max = guess - 1
   end
 end
