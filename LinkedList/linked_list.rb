@@ -81,6 +81,21 @@ class LinkedList
     index
   end
 
+  def reverse(head = @head)
+    prev = nil
+    curr = head
+    nxt = nil
+
+    until curr.nil?
+      nxt = curr.next_node
+      curr.next_node = prev
+      prev = curr
+      curr = nxt
+    end
+
+    @head = prev
+  end
+
   def to_s
     output = ''
     curr_node = @head
